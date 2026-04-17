@@ -5,6 +5,14 @@
 a{
     text-decoration: none;
 }
+.alert{
+    background-color: coral;
+    font-size: 18px;
+    margin: 20px;
+}
+div{
+    margin: 10px;
+}
 
 .container{
     text-align: center;
