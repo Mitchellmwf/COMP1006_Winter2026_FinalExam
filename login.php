@@ -1,7 +1,12 @@
 <?php
-require "includes/connect.php";
-require "includes/header.php";
+require "./includes/connect.php";
+require "./includes/header.html";
 
+//if the user is already logged in, redirect them to the controls page
+if (isset($_SESSION['username'])) {
+    header("Location: ./admin.php");
+    exit;
+}
 $error = "";
 
 //if the user is already logged in, redirect them to the admin page
@@ -22,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Username/email and password are required.";
     } else {
         // SQL query to find account by username or email
-        $sql = "SELECT user_id, username, email, password, profile_image
-                FROM task_users
+        $sql = "SELECT id, username, email, password
+                FROM gallery_users
                 WHERE username = :login OR email = :login
                 LIMIT 1";
         $stmt = $pdo->prepare($sql);
@@ -38,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Regenerate session ID and store user info in session variables
             session_regenerate_id(true);
 
-            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['email'] = $user['email'];
 

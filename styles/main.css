@@ -6,12 +6,27 @@ a{
     text-decoration: none;
 }
 .alert{
-    background-color: coral;
+    background-color: rgb(253, 77, 50);
     font-size: 18px;
-    margin: 20px;
+    margin: 15px;
+    border: 2px solid black;
 }
 div{
     margin: 10px;
+}
+table{
+    border: 2px solid black;
+    justify-self: center;
+    width: 90%;
+}
+td, th{
+    border: 1px solid black;
+}
+img{
+    width: 100%
+}
+tr, th, td{
+    padding: 10px;
 }
 
 .container{

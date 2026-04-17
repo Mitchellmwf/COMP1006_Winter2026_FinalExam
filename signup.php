@@ -2,6 +2,12 @@
     // Include the database connection so we can interact with the users table
     require "./includes/connect.php";
     require "./includes/header.html";
+    
+    //if the user is already logged in, redirect them to the controls page
+    if (isset($_SESSION['username'])) {
+        header("Location: ./admin.php");
+        exit;
+    }
 
     // Array to store validation errors
     $errors = [];
@@ -70,7 +76,7 @@
         if (empty($errors)) {
 
             // SQL query to check for existing username or email
-            $sql = "SELECT id FROM users WHERE username = :username OR email = :email";
+            $sql = "SELECT id FROM gallery_users WHERE username = :username OR email = :email";
 
             // Prepare the SQL statement using PDO
             $stmt = $pdo->prepare($sql);
@@ -100,7 +106,7 @@
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             // SQL query to insert the new user
-            $sql = "INSERT INTO users (username, email, password)
+            $sql = "INSERT INTO gallery_users (username, email, password)
                     VALUES (:username, :email, :password)";
 
             // Prepare the insert statement
