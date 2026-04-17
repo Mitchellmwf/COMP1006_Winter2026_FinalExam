@@ -22,7 +22,7 @@ table{
 td, th{
     border: 1px solid black;
 }
-img{
+td img{
     width: 100%
 }
 tr, th, td{

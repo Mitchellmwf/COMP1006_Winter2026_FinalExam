@@ -1,4 +1,7 @@
 <?php 
+    if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+    }
     require_once "./includes/connect.php";
     require_once "./includes/header.html";
 
@@ -13,7 +16,12 @@
 ?>
 <div class="container">
     <div id="heading">
-        <h1>Image Gallery</h1> <a class="button" href="./login.php">Log In</a>
+        <h1>Image Gallery</h1> 
+        <?php if (isset($_SESSION['username'])): ?>
+            <a class="button" href="./admin.php">Admin</a>
+        <?php else: ?>
+            <a class="button" href="./login.php">Log In</a>
+        <?php endif; ?>
     </div>
     <div class="gallery">
     <?php if (empty($images)): ?>
@@ -21,9 +29,9 @@
     <?php else: ?>
         <?php foreach($images as $image): ?>
             <img
-                src="<?= htmlspecialchars($product['image_path']); ?>"
-                class="card-img-top"
-                alt="<?= htmlspecialchars($product['name']); ?>">
+                src="<?= htmlspecialchars($image['path']); ?>"
+                alt="<?= htmlspecialchars($image['name']); ?>"
+                style="max-width: 15vw;">
         <?php endforeach; ?>
     <?php endif; ?>
     </div>

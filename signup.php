@@ -2,7 +2,9 @@
     // Include the database connection so we can interact with the users table
     require "./includes/connect.php";
     require "./includes/header.html";
-    
+    if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+    }
     //if the user is already logged in, redirect them to the controls page
     if (isset($_SESSION['username'])) {
         header("Location: ./admin.php");

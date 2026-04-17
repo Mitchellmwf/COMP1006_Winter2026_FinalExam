@@ -51,7 +51,7 @@
 <div class="container" style="min-height: 100px;">
     <form method="post" enctype="multipart/form-data">
         <h1>Add image</h1>
-        <input type="file" id="image" name="image" accept="image/*">
+        <input type="file" id="image" name="image" accept="image/*" required>
             </br>
         <button class="button" type="submit">upload</button>
     </form>
