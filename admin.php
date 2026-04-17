@@ -46,6 +46,10 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+            </br>
+            </br>
+    <a href="./index.php" class="button">Back to Gallery</a>
+    <a href="./signout.php" class="button">Log Out</a>
 </div>
             </br>
 <div class="container" style="min-height: 100px;">

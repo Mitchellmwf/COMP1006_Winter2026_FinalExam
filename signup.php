@@ -146,13 +146,12 @@
 
     <!-- Display success message if account creation succeeded -->
     <?php if ($success !== ""): ?>
-        <div class="alert2">
+        <div class="alert" style="background-color: rgb(50, 253, 77);">
             <?= htmlspecialchars($success); ?>
             <br>
-            <!-- Provide a link to the login page -->
-            <a href="login.php" class="button">Go to Login</a>
-        </div>
     <?php endif; ?>
+
+
 
     <!-- Registration form -->
     <form method="post" class="mt-3">
